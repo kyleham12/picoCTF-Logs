@@ -1,0 +1,23 @@
+Basic-mod1
+
+We start by downloading the message.txt file from the challenge page. We are presented with the list of numbers in the file, and we need to find the mod 37 of each number and map it to its corresponding character.
+To do this, we can code up a solution as doing it by hand would be too inefficient. 
+We first need to create a key to map each of the 37 characters to its corresponding number from 0-36. Once we have the key, we can then mod 37 each of the numbers in the message and lookup in the key what char the result corresponds to.
+Finally, we print each result together on the same line to format the flag
+
+'''
+msg = "350 63 353 198 114 369 346 184 202 322 94 235 114 110 185 188 225 212 366 374 261 213".split()
+
+mods = [i for i in range(0,37)]
+
+chars = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
+
+key = {mods[i]: chars[i] for i in range(len(mods))}
+
+print("picoCTF{", end='')
+for i in range(len(msg)):
+    print(key[int(msg[i]) % 37], end='')
+print("}")
+'''
+
+Flag: picoCTF{R0UND_N_R0UND_ADD17EC2}
